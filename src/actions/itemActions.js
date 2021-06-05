@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 
 export const getItem = () => dispatch => {
     dispatch(setItemLoading());
-    axios.get('http://localhost:5000/api/items')
+    axios.get('https://list-itmes.herokuapp.com/api/items')
     .then(res => 
         dispatch({
             type: actions.GET_ITEMS,
@@ -18,7 +18,7 @@ export const getItem = () => dispatch => {
 };
 
 export const addItem = item => (dispatch, getState) => {
-    axios.post('http://localhost:5000/api/items', item, tokenConfig(getState))
+    axios.post('https://list-itmes.herokuapp.com/api/items', item, tokenConfig(getState))
     .then(res => dispatch({
         type: actions.ADD_ITEM,
         payload: res.data
@@ -29,7 +29,7 @@ export const addItem = item => (dispatch, getState) => {
 };
 
 export const deleteItem = id => (dispatch, getState) => {
-    axios.delete(`http://localhost:5000/api/items/${id}`, tokenConfig(getState))
+    axios.delete(`https://list-itmes.herokuapp.com/api/items/${id}`, tokenConfig(getState))
     .then(res => dispatch({
         type: actions.DELETE_ITEM,
         payload: id
